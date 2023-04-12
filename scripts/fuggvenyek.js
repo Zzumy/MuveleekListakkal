@@ -40,7 +40,12 @@ export function adminTablazat(lista) {
         </tr>`;
     }
     $("#tablazat").eq(0).html(tartalom+=`</tbody>`);
-    
+
+    $('.torles').click(function() {
+        var index = $(this).data('index');
+        kutyakObjektumLista.splice(index, 1);
+        updateTable();
+    });
 }
 
 export function szurNevSzerint(lista, feltetel){
@@ -58,12 +63,15 @@ export function szurFajtaSzerint(lista, feltetel){
 }
 
 export function szurKorSzerint(lista, feltetel){
-    try {
-        const filteredList = lista.filter(kutya => eval(`${kutya.kor}${feltetel}`));
-        return filteredList;
-      } catch(error) {
-        return lista;
-      }
+    try{
+        const eredmenyLista = lista.filter(function(macska){
+            return eval(macska.kor+feltetel)
+        })
+        return eredmenyLista
+    }
+    catch{
+        return lista
+    }
 }
 
 export function szur(belista){
