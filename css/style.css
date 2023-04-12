@@ -1,0 +1,29 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    color: black;
+    font-size: 18px;
+}
+
+main{
+    width: 850px;
+    margin: auto;
+}
+
+nav ul li{
+    display: inline;
+}
+
+article{
+    margin-bottom: 16px;
+}
+
+div{
+    margin-bottom: 16px;
+}
+
+footer{
+    text-align: center;
+}

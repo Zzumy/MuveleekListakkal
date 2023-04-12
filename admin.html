@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="scripts/script.js" type="module"></script>
+    <title>Adatok Listazasa | Nguyen Duc Duy</title>
+</head>
+<body>
+    <main>
+        <header>
+            <h1>Adatok listazasa</h1>
+        </header>
+        <nav class="navbar navbar-default">
+            <ul class="nav navbar-nav">
+                <li><a href="index.html">Kutyák adatainak megtekintése</a></li>
+                <li class="active"><a href="#">Admin felület</a></li>
+            </ul>
+        </nav>
+        <article>
+            <form>
+                <div>
+                    <label for="nev"></label>
+                    <input type="text" id="nev" name="nev" placeholder="Név szerint szűres">
+                    <label for="faj"></label>
+                    <input type="text" id="faj" name="faj" placeholder="Faj szerint szűres">
+                    <label for="kor"></label>
+                    <input type="number" id="kor" name="kor" placeholder="Kor szerint szűres">
+                </div>
+                <div>
+                    <label for="ujNev"></label>
+                    <input type="text" id="ujNev" name="ujNev" placeholder="Név">
+                    <label for="ujFaj"></label>
+                    <input type="text" id="ujFaj" name="ujFaj" placeholder="Faj">
+                    <label for="ujKor"></label>
+                    <input type="number" id="ujKor" name="ujKor" placeholder="Kor">
+                    <button type="button" id="felvitel">Új elem</button>
+                </div>
+            </form>
+        </article>
+        <aside>
+            <table class="table table-bordered table-striped" id="tablazat"></table>
+        </aside>
+        <footer><p>@Nguyen Duc Duy</p></footer>
+</main>
+</body>
+</html>
