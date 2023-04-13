@@ -1,8 +1,8 @@
-import { adminTablazat, alapTablazat, szur } from "./fuggvenyek.js";
+import { adminTablazat, kartya, szur } from "./fuggvenyek.js";
 import { kutyakObjektumLista } from "./data.js";
 
 $(function() {
-    alapTablazat(kutyakObjektumLista);
+    kartya(kutyakObjektumLista);
     adminTablazat(kutyakObjektumLista);
     $("#nev").on("keyup",function(){
         szur(kutyakObjektumLista)
@@ -11,6 +11,9 @@ $(function() {
         szur(kutyakObjektumLista)
     })
     $("#kor").on("keyup",function(){
+        szur(kutyakObjektumLista)
+    })
+    $("#kovetelmeny").on("change",function(){
         szur(kutyakObjektumLista)
     })
 
@@ -41,11 +44,11 @@ $(function() {
             row.append($('<td>').text(obj.nev));
             row.append($('<td>').text(obj.fajta));
             row.append($('<td>').text(obj.kor));
-            row.append($('<td>').append($('<button>').text('❌').attr('data-index', i).addClass('delete-btn')));
+            row.append($('<td>').append($('<button>').text('❌').attr('data-index', i).addClass('torles')));
             tableBody.append(row);
         }
 
-        $('.delete-btn').click(function() {
+        $('.torles').click(function() {
             var index = $(this).data('index');
             kutyakObjektumLista.splice(index, 1);
             updateTable();

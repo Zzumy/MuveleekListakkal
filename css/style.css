@@ -7,6 +7,14 @@
     font-size: 18px;
 }
 
+#adatok{
+    padding: 5px;
+}
+
+#adatok h1, h2{
+    margin: 0;
+}
+
 main{
     width: 850px;
     margin: auto;
@@ -20,8 +28,37 @@ article{
     margin-bottom: 16px;
 }
 
+.card{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+#kepMezo{
+    width: 8%;
+}
+
+td{
+    text-align: center;
+    vertical-align: middle;
+}
+
+.listaKep{
+    width: 100px;
+}
+
+img{
+    width: 100%;
+    border-bottom: 1px solid gray;
+}
+
 div{
-    margin-bottom: 16px;
+    margin-bottom: 10px;
+}
+
+.card-body{
+    margin: 10px;
+    border: 1px solid gray;
+    border-radius: 2px;
 }
 
 footer{

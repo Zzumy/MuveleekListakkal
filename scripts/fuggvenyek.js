@@ -1,7 +1,25 @@
-export function alapTablazat(lista) {
+export function kartya(lista) {
+    let tartalom = "";
+    for (let index = 0; index < lista.length; index++) {
+        tartalom +=
+        `<div class = "card-body">
+            <img src="${lista[index].kep}" alt="kutya">
+            <div id = "adatok">
+            <h1>Név: ${lista[index].nev}</h1>
+            <h2>Fajta: ${lista[index].fajta}</h2>
+            <h2>Kor: ${lista[index].kor}</h2>
+            </div>
+        </div>`;
+    }
+    $(".card").eq(0).html(tartalom);
+}
+
+
+export function adminTablazat(lista) {
     let tartalom = 
     `<thead>
         <tr>
+            <th>kép</th>
             <th>név</th>
             <th>fajta</th>
             <th>kor</th>
@@ -11,41 +29,13 @@ export function alapTablazat(lista) {
     for (let index = 0; index < lista.length; index++) {
         tartalom +=
         `<tr>
+            <td id="kepMezo"><img src="${lista[index].kep}" class="listaKep" alt="kutya"></td>
             <td>${lista[index].nev}</td>
             <td>${lista[index].fajta}</td>
             <td>${lista[index].kor}</td>
         </tr>`;
     }
     $("table").eq(0).html(tartalom+=`</tbody>`);
-}
-
-export function adminTablazat(lista) {
-    let tartalom = 
-    `<thead>
-        <tr>
-            <th>név</th>
-            <th>fajta</th>
-            <th>kor</th>
-            <th>törlés</th>
-        </tr>
-    </thead>
-    <tbody>`;
-    for (let index = 0; index < lista.length; index++) {
-        tartalom +=
-        `<tr>
-            <td>${lista[index].nev}</td>
-            <td>${lista[index].fajta}</td>
-            <td>${lista[index].kor}</td>
-            <td>❌</td>
-        </tr>`;
-    }
-    $("#tablazat").eq(0).html(tartalom+=`</tbody>`);
-
-    $('.torles').click(function() {
-        var index = $(this).data('index');
-        kutyakObjektumLista.splice(index, 1);
-        updateTable();
-    });
 }
 
 export function szurNevSzerint(lista, feltetel){
@@ -62,10 +52,10 @@ export function szurFajtaSzerint(lista, feltetel){
     return eredmenyLista;
 }
 
-export function szurKorSzerint(lista, feltetel){
+export function szurKorSzerint(lista, elojel, feltetel){
     try{
-        const eredmenyLista = lista.filter(function(macska){
-            return eval(macska.kor+feltetel)
+        const eredmenyLista = lista.filter(function(kutya){
+            return eval(kutya.kor+elojel+feltetel)
         })
         return eredmenyLista
     }
@@ -77,6 +67,6 @@ export function szurKorSzerint(lista, feltetel){
 export function szur(belista){
     let lista=szurNevSzerint(belista, $("#nev").val());
     lista=szurFajtaSzerint(lista, $("#faj").val());
-    lista=szurKorSzerint(lista, $("#kor").val());
-    alapTablazat(lista);
+    lista=szurKorSzerint(lista, $("#kovetelmeny").val(), $("#kor").val());
+    adminTablazat(lista);
 }

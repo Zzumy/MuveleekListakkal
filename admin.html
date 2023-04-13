@@ -26,19 +26,18 @@
         <article>
             <form>
                 <div>
-                    <label for="nev"></label>
                     <input type="text" id="nev" name="nev" placeholder="Név szerint szűres">
-                    <label for="faj"></label>
                     <input type="text" id="faj" name="faj" placeholder="Faj szerint szűres">
-                    <label for="kor"></label>
+                    <select name="kovetelmeny" id="kovetelmeny">
+                        <option value="<"><</option>
+                        <option value=">">></option>
+                        <option value="==">=</option>
+                    </select>
                     <input type="text" id="kor" name="kor" placeholder="Kor szerint szűres">
                 </div>
                 <div>
-                    <label for="ujNev"></label>
                     <input type="text" id="ujNev" name="ujNev" placeholder="Név">
-                    <label for="ujFaj"></label>
                     <input type="text" id="ujFaj" name="ujFaj" placeholder="Faj">
-                    <label for="ujKor"></label>
                     <input type="text" id="ujKor" name="ujKor" placeholder="Kor">
                     <button type="button" id="felvitel">Új elem</button>
                 </div>
