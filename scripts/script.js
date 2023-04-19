@@ -41,6 +41,7 @@ $(function() {
         for (var i = 0; i < kutyakObjektumLista.length; i++) {
             var obj = kutyakObjektumLista[i];
             var row = $('<tr>');
+            row.append($('<td>').attr("src", obj.kep));
             row.append($('<td>').text(obj.nev));
             row.append($('<td>').text(obj.fajta));
             row.append($('<td>').text(obj.kor));

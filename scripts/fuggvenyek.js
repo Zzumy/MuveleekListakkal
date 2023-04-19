@@ -19,10 +19,10 @@ export function adminTablazat(lista) {
     let tartalom = 
     `<thead>
         <tr>
-            <th>kép</th>
-            <th>név</th>
-            <th>fajta</th>
-            <th>kor</th>
+            <th id="kepTh">kép</th>
+            <th id="nevTh">név</th>
+            <th id="fajtaTh">fajta</th>
+            <th id="korTh">kor</th>
         </tr>
     </thead>
     <tbody>`;
@@ -36,6 +36,22 @@ export function adminTablazat(lista) {
         </tr>`;
     }
     $("table").eq(0).html(tartalom+=`</tbody>`);
+
+    $("#kepTh, #nevTh, #fajtaTh, #korTh").on("click", function() {
+        let columnId = $(this).attr("id");
+        let columnName = columnId.slice(0, -2);
+        let sortedLista = lista.slice();
+        if (columnName === "kor") {
+            sortedLista.sort((a, b) => {
+                return a[columnName] - b[columnName];
+            });
+        } else {
+            sortedLista.sort((a, b) => {
+                return a[columnName].localeCompare(b[columnName], 'hu-HU', {sensitivity: 'base'});
+            });
+        }
+        adminTablazat(sortedLista);
+    });
 }
 
 export function szurNevSzerint(lista, feltetel){
