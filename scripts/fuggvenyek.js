@@ -23,6 +23,8 @@ export function adminTablazat(lista) {
             <th id="nevTh">név</th>
             <th id="fajtaTh">fajta</th>
             <th id="korTh">kor</th>
+            <th>módosítás</th>
+            <th>törlés</th>
         </tr>
     </thead>
     <tbody>`;
@@ -33,6 +35,10 @@ export function adminTablazat(lista) {
             <td>${lista[index].nev}</td>
             <td>${lista[index].fajta}</td>
             <td>${lista[index].kor}</td>
+            <td class="modositasMezo" data-index="${index}">
+                <input type="text" class="modositasInput" value="${lista[index].nev},${lista[index].fajta},${lista[index].kor}"><button class="modositasGomb">✏️</button>
+            </td>
+            <td class="torlesGomb" data-index="${index}">❌</td>
         </tr>`;
     }
     $("table").eq(0).html(tartalom+=`</tbody>`);
@@ -51,6 +57,22 @@ export function adminTablazat(lista) {
             });
         }
         adminTablazat(sortedLista);
+    });
+
+    $(".modositasGomb").on("click", function() {
+        let index = $(this).parent().data("index");
+        let inputVal = $(this).prev(".modositasInput").val();
+        let [nev, fajta, kor] = inputVal.split(",");
+        lista[index].nev = nev;
+        lista[index].fajta = fajta;
+        lista[index].kor = kor;
+        adminTablazat(lista);
+    });
+
+    $(".torlesGomb").on("click", function() {
+        let index = $(this).data("index");
+        lista.splice(index, 1);
+        adminTablazat(lista);
     });
 }
 
